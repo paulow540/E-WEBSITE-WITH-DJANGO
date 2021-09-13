@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls import url
 from django.views.generic import TemplateView
+from Ecommance.adminapp.views import SignUpView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -26,6 +27,6 @@ urlpatterns = [
     path("shop/", TemplateView.as_view(template_name="shop.html"), name = "shop"),
     path("shop-single/", TemplateView.as_view(template_name="shop-single.html"), name = "shop-single"),
     url(r'^accounts/', include('django.contrib.auth.urls')),
-    # url(r'^accounts/signup/$', SignUpView.as_view(), name ="signup")
+    url(r'^accounts/signup/$', SignUpView.as_view(), name ="signup")
 
 ]
