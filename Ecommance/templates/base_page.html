@@ -99,6 +99,9 @@ https://templatemo.com/tm-559-zay-shop
                     <a class="nav-icon d-none d-lg-inline" href="#" data-bs-toggle="modal" data-bs-target="#templatemo_search">
                         <i class="fa fa-fw fa-search text-dark mr-2"></i>
                     </a>
+
+                    {% if user.is_authenticated %}
+                   
                     <a class="nav-icon position-relative text-decoration-none" href="#">
                         <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
                         <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">7</span>
@@ -110,7 +113,13 @@ https://templatemo.com/tm-559-zay-shop
                     <a class="nav-icon position-relative mx-4 text-decoration-none" href={% url "login" %}>
                         <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">Login</span>
                     </a>
-                   
+
+                    {% else %}
+                    <a class="nav-icon position-relative mx-4 text-decoration-none" href={% url "logout" %}>
+                        <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">Log out</span>
+                    </a>
+                    {% endif %}
+
                 </div>
             </div>
 
@@ -118,16 +127,13 @@ https://templatemo.com/tm-559-zay-shop
     </nav>
 
 
-    {% block body_content %}
-
-    
-    {% endblock body_content %}
+    {% block body_content %} {% endblock body_content %}
 
     <!-- Start Footer -->
     <footer class="bg-dark" id="tempaltemo_footer">
         <div class="container">
             <div class="row">
-                
+
                 <div class="col-md-4 pt-5">
                     <h2 class="h2 text-success border-bottom pb-3 border-light logo">Zay Shop</h2>
                     <ul class="list-unstyled text-light footer-link-list">
@@ -240,8 +246,7 @@ https://templatemo.com/tm-559-zay-shop
                     <div class="col-12">
                         <p class="text-left text-light">
                             Copyright &copy; 2021 Company Name | Designed by
-                            <a rel="sponsored" href="https://templatemo.com"
-                                target="_blank">TemplateMo</a>
+                            <a rel="sponsored" href="https://templatemo.com" target="_blank">TemplateMo</a>
                         </p>
                     </div>
                 </div>
