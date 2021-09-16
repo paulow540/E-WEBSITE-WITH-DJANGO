@@ -28,7 +28,8 @@ urlpatterns = [
     path("shop/", TemplateView.as_view(template_name="shop.html"), name = "shop"),
     path("shop-single/", TemplateView.as_view(template_name="shop-single.html"), name = "shop-single"),
     url(r'^accounts/', include('django.contrib.auth.urls')),
-    url(r'^accounts/signup/$', SignUpView.as_view(), name ="signup")
-    url(r'^username/(?P<user_id>\d+)/', user_view.userProfile, name ="username")
+    url(r'^accounts/signup/$', SignUpView.as_view(), name ="signup"),
+    url(r'^adminapp/', include('Ecommance.adminapp.urls')),
+    # url(r'^username/(?P<user_id>\d+)/', user_view.userProfile, name ="username")
 
 ]
