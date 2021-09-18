@@ -1,20 +1,28 @@
-{% extends 'base_page.html' %}
+{% extends 'base.html' %}
 {% load static %}
-{% block title %} signup {% endblock %}
+{% block title %} Signup {% endblock %}
 
-{% block body_content %}
 
-    <div class ="row mt-4 mb-4">
-        <div class ="col-6 mx-auto">
-            <form action="" method="POST">
-                {% csrf_token %}            
-                {{form.as_p}}        
-                <input  class="mt-3 btn btn-primary" type="submit" value="signup">
-                <a href = {% url "password_reset" %}>Reset password</a>
-                
-            </form>
 
-        </div>
-    </div>
+
+{% block body %}
+
+<div class="row mt-4 mb-4">
+  <div class="col-6 mx-auto">
+    <form action="" method="POST">
+      {% csrf_token %}
+      {% load bootstrap_tags %}
+      {{form|as_bootstrap}} 
+      <input class="mt-3 btn btn-primary" type="submit" value="Sign up">
+      <!-- <div>
+        Forget your password? <a href={% url "password_reset" %}>Reset password</a>
+      </div> -->
+      <div>
+        Have an account? <a href={% url "login" %}>Sign in</a>
+      </div>
+      
+    </form>
+  </div>
+</div>
 
 {% endblock %}

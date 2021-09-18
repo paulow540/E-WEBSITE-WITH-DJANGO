@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'Ecommance.adminapp',
     'Ecommance.userapp',
     'Ecommance.paymentapp',
-    # 'django_form_bootstrap'
+    'django_forms_bootstrap'
 ]
 
 MIDDLEWARE = [
