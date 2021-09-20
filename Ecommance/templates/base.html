@@ -47,14 +47,18 @@ https://templatemo.com/tm-559-zay-shop
                     <a class="navbar-sm-brand text-light text-decoration-none" href="tel:010-020-0340">010-020-0340</a>
                 </div>
 
-                {% if user.is_staff %}
+                {% comment %} {% if user.is_staff %} {% endcomment %}
                 <div>
-                    <a class="text-light text-lg" href="{% url 'upload_prod' %}" target="_blank" rel="sponsored"><i class="fas fa-cog fa-sm fa-fw me-2 "></i></a>
+                    <a class="nav-icon position-relative mx-5 text-decoration-none" href={% url "cart" %}>
+                            <i class="fa fa-fw fa-cart-arrow-down  mr-2"></i>
+                            <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">7</span>
+                    </a>
+                    {% comment %} <a class="text-light text-lg" href="{% url 'upload_prod' %}" target="_blank" rel="sponsored"><i class="fas fa-cog fa-sm fa-fw me-2 "></i></a> {% endcomment %}
                     <a class="text-light" href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram fa-sm fa-fw me-2"></i></a>
                     <a class="text-light" href="https://twitter.com/" target="_blank"><i class="fab fa-twitter fa-sm fa-fw me-2"></i></a>
                     <a class="text-light" href="https://www.linkedin.com/" target="_blank"><i class="fab fa-linkedin fa-sm fa-fw"></i></a>
                 </div>
-                {% endif %}
+                {% comment %} {% endif %} {% endcomment %}
             </div>
         </div>
     </nav>
@@ -108,32 +112,54 @@ https://templatemo.com/tm-559-zay-shop
                     
 
                     {% if user.is_authenticated %}
-                        <a class="nav-icon position-relative mx-5 text-decoration-none" href={% url "cart" %}>
-                            <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
-                            <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">7</span>
-                        </a>
-
-                        <li class="nav-item dropdown">
-
-                            <a style="text-decoration: none;" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fa fa-fw fa-user text-dark mr-3"></i>
+                        {% comment %} <a class="text-light text-lg" href="{% url 'upload_prod' %}" target="_blank" rel="sponsored"><i class="fas fa-cog fa-sm fa-fw me-2 text-dark "></i></a> {% endcomment %}
+                       <a class="text-light text-lg" href="{% url 'upload_prod' %}" target="_blank" rel="sponsored" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-cog fa-sm fa-fw me-2 text-dark "></i>
                             </a>
+                      
+                       <div class="dropdown-menu" aria-labelledby="navbarDropdown" >
 
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-
-                                <a class="dropdown-item nav-icon position-relative mt-1  text-decoration-none" href="#"> <i class="fa fa-fw fa-user text-dark mr-3"></i>
+                                {% comment %} <a class="dropdown-item nav-icon position-relative   text-decoration-none" href="#"> <i class="fa fa-fw fa-user text-dark mr-3"></i>
                                     <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">+99</span>
-                                </a>
-                                <a class="dropdown-item nav-icon position-relative mt-1  text-decoration-none" 
-                                <a class="dropdown-item nav-icon position-relative mt-1 text-decoration-none" href='{% url "username" user.id %}'>
-                                    <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">{{ user.username }}</span>
+                                </a> {% endcomment %}
+                                {% comment %} <!-- <a class="dropdown-item nav-icon position-relative mt-2  text-decoration-none"  --> {% endcomment %}
+                                <a class="dropdown-item nav-icon position-relative mt-3 ml-5 p-3 text-decoration-none" href='{% url "upload_prod" %}'>
+                                    <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">Upload product</span>
                                 </a>
 
-                                <a class="dropdown-item nav-icon position-relative mt-1 text-decoration-none" href={% url "password_change" %}'>
+                                <a class="dropdown-item nav-icon position-relative mt-4 ml-5 p-3 text-decoration-none" href={% url "password_change" %}'>
                                     <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">Change Password</span>
                                 </a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item nav-icon position-relative mt-1 text-decoration-none" href={% url "logout" %}'>
+                                <a class="dropdown-item nav-icon position-relative mt-3 ml-5 p-3 text-decoration-none" href={% url "logout" %}'>
+                                    <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">Logout</span>
+                                </a>
+                            </div> 
+                        {% comment %} <a class="nav-icon position-relative mx-5 text-decoration-none" href={% url "cart" %}>
+                            <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
+                            <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">7</span>
+                        </a> {% endcomment %}
+                          <a style="text-decoration: none;" class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown1" aria-haspopup="true" aria-expanded="false">
+                                <i class="fa fa-fw fa-user text-dark "></i>
+                            </a>
+
+                        <li class="nav-item dropdown1">                          
+
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown1" >
+
+                                {% comment %} <a class="dropdown-item nav-icon position-relative   text-decoration-none" href="#"> <i class="fa fa-fw fa-user text-dark mr-3"></i>
+                                    <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">+99</span>
+                                </a> {% endcomment %}
+                                {% comment %} <!-- <a class="dropdown-item nav-icon position-relative mt-2  text-decoration-none"  --> {% endcomment %}
+                                <a class="dropdown-item nav-icon position-relative mt-3 ml-5 p-3 text-decoration-none" href='{% url "username" user.id %}'>
+                                    <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">{{ user.username }}</span>
+                                </a>
+
+                                <a class="dropdown-item nav-icon position-relative mt-4 ml-5 p-3 text-decoration-none" href={% url "password_change" %}'>
+                                    <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">Change Password</span>
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item nav-icon position-relative mt-3 ml-5 p-3 text-decoration-none" href={% url "logout" %}'>
                                     <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">Logout</span>
                                 </a>
                             </div> 
