@@ -17,19 +17,19 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls import url
 from django.views.generic import TemplateView
-from Ecommance.adminapp.views import SignUpView
+from Ecommance.adminapp import views as admin_view
 from Ecommance.userapp import views as user_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("", TemplateView.as_view(template_name="index.html"), name ="homepage"),
+    path("", admin_view.index_page, name ="homepage"),
     path("contact/", TemplateView.as_view(template_name="contact.html"), name = "contact"),
     path("about/", TemplateView.as_view(template_name="about.html"), name = "about"),
     path("shop/", TemplateView.as_view(template_name="shop.html"), name = "shop"),
     path("shop-single/", TemplateView.as_view(template_name="shop-single.html"), name = "shop-single"),
     path("cart/", TemplateView.as_view(template_name="cart.html"), name = "cart"),
     url(r'^accounts/', include('django.contrib.auth.urls')),
-    url(r'^accounts/signup/$', SignUpView.as_view(), name ="signup"),
+    # url(r'^accounts/signup/$', SignUpView.as_view(), name ="signup"),
     url(r'^adminapp/', include('Ecommance.adminapp.urls')),
     url(r'^username/(?P<user_id>\d+)/', user_view.userProfile, name ="username")
 

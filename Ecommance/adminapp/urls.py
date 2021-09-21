@@ -3,6 +3,8 @@ from Ecommance.adminapp import views as admin_view
 
 urlpatterns = [
     url(r'^product_upload/', admin_view.upload_product, name='upload_prod'),
+    url(r'^product_description/', admin_view.upload_product, name='upload_description'),
+    
     url(r'^manage_product/$', admin_view.manage_product, name='manage_prod'),
     url(r'^user_profile/(?P<user_id>\d+)/', admin_view.manage_product, name='user_profile'),
     url(r'^product_status/(?P<user_id>\d+)/', admin_view.manage_product, name='product_status'),
