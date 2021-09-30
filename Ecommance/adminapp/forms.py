@@ -28,6 +28,8 @@ class Product_form(forms.ModelForm):
             'product_name',
             'price',
             'quantity',
+            'category',
+            'display_type',
             'description',
             'profile_picture',
         

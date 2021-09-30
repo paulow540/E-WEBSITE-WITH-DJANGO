@@ -78,7 +78,7 @@ https://templatemo.com/tm-559-zay-shop
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <div class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex justify-content-lg-between" id="templatemo_main_nav">
+            <div class="align-self-center collapse navbar-collapse flex-fill  d-sm-flex justify-content-sm-between" id="templatemo_main_nav">
                 <div class="flex-fill">
                     <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
                         <li class="nav-item">
@@ -95,6 +95,7 @@ https://templatemo.com/tm-559-zay-shop
                         </li>
                     </ul>
                 </div>
+                
                 <div class="navbar align-self-center d-flex">
                     <div class="d-lg-none flex-sm-fill mt-3 mb-4 col-7 col-sm-auto pr-3">
                         <div class="input-group">
@@ -106,67 +107,62 @@ https://templatemo.com/tm-559-zay-shop
                     </div>
                     <a class="nav-icon d-none d-lg-inline" href="#" data-bs-toggle="modal" data-bs-target="#templatemo_search">
                         <i class="fa fa-fw fa-search text-dark mr-2"></i>
-                    </a>
-                    
-                    <!-- login -->
-                    
+                    </a>                              
 
-                    {% if user.is_authenticated %}
-                        {% comment %} <a class="text-light text-lg" href="{% url 'upload_prod' %}" target="_blank" rel="sponsored"><i class="fas fa-cog fa-sm fa-fw me-2 text-dark "></i></a> {% endcomment %}
-                       <a class="text-light text-lg" href="{% url 'upload_prod' %}" target="_blank" rel="sponsored" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-cog fa-sm fa-fw me-2 text-dark "></i>
-                            </a>
+                    {% if user.is_authenticated %} 
+                               
+                         
+                     <div>
+                        <a class="text-light text-lg" href="{% url 'upload_prod' %}" target="_blank" rel="sponsored" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-cog fa-sm fa-fw me-2 text-dark "></i>
+                        </a>
                       
                        <div class="dropdown-menu" aria-labelledby="navbarDropdown" >
 
-                                {% comment %} <a class="dropdown-item nav-icon position-relative   text-decoration-none" href="#"> <i class="fa fa-fw fa-user text-dark mr-3"></i>
-                                    <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">+99</span>
-                                </a> {% endcomment %}
-                                {% comment %} <!-- <a class="dropdown-item nav-icon position-relative mt-2  text-decoration-none"  --> {% endcomment %}
                                 <a class="dropdown-item nav-icon position-relative mt-3 ml-5 p-3 text-decoration-none" href='{% url "upload_prod" %}'>
                                     <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">Upload product</span>
                                 </a>
 
-                                <a class="dropdown-item nav-icon position-relative mt-4 ml-5 p-3 text-decoration-none" href={% url "password_change" %}'>
-                                    <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">Change Password</span>
-                                </a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item nav-icon position-relative mt-3 ml-5 p-3 text-decoration-none" href={% url "logout" %}'>
-                                    <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">Logout</span>
-                                </a>
-                            </div> 
-                        {% comment %} <a class="nav-icon position-relative mx-5 text-decoration-none" href={% url "cart" %}>
-                            <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
-                            <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">7</span>
-                        </a> {% endcomment %}
-                          <a style="text-decoration: none;" class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown1" aria-haspopup="true" aria-expanded="false">
-                                <i class="fa fa-fw fa-user text-dark "></i>
+                                <a class="dropdown-item nav-icon position-relative mt-4 ml-5 p-3 text-decoration-none" href='{% url 'manage_prod' %}'>
+                                    <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">manage Product</span>
+                                </a> 
+                                <div class="dropdown-divider"></div> 
+                                
+
+
+                        </div> 
+                     
+                     </div>
+
+
+
+
+                    <div>
+                       <a class="text-light text-lg" href="#" target="_blank" rel="sponsored" id="navbarDropdown navbarDropdownlow" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-user fa-sm fa-fw me-2  text-dark "></i>
+                        </a>
+                      
+                       <div class="dropdownlow dropdown-menu " aria-labelledby="navbarDropdown navbarDropdownlow" >
+
+                            <a class="dropdown-item nav-icon position-relative mt-3 ml-5 p-3 text-decoration-none" href='{% url "username" user.id %}'>
+                                <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">{{ user.username }}</span>
                             </a>
 
-                        <li class="nav-item dropdown1">                          
-
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown1" >
-
-                                {% comment %} <a class="dropdown-item nav-icon position-relative   text-decoration-none" href="#"> <i class="fa fa-fw fa-user text-dark mr-3"></i>
-                                    <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">+99</span>
-                                </a> {% endcomment %}
-                                {% comment %} <!-- <a class="dropdown-item nav-icon position-relative mt-2  text-decoration-none"  --> {% endcomment %}
-                                <a class="dropdown-item nav-icon position-relative mt-3 ml-5 p-3 text-decoration-none" href='{% url "username" user.id %}'>
-                                    <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">{{ user.username }}</span>
-                                </a>
-
-                                <a class="dropdown-item nav-icon position-relative mt-4 ml-5 p-3 text-decoration-none" href={% url "password_change" %}'>
-                                    <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">Change Password</span>
-                                </a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item nav-icon position-relative mt-3 ml-5 p-3 text-decoration-none" href={% url "logout" %}'>
-                                    <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">Logout</span>
-                                </a>
-                            </div> 
+                            <a class="dropdown-item nav-icon position-relative mt-4 ml-5 p-3 text-decoration-none" href='{% url "password_change" %}'>
+                                <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">Change Password</span>
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item nav-icon position-relative mt-3 ml-5 p-3 text-decoration-none" href='{% url "logout" %}'>
+                                <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">Logout</span>
+                            </a>
+                        </div> 
+                    
+                    </div>
                             
                             
-                            
-                        </li>
+                        
+
+                 
                     
 
                     {% else %}
