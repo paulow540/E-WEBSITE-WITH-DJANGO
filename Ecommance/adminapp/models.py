@@ -29,3 +29,4 @@ class Product_table(models.Model):
     category = models.CharField(max_length=20, choices=cat, default=None)
     display_type = models.CharField(unique=False, max_length=20, choices=d_type,default =None)
     
+

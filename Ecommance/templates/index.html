@@ -107,7 +107,7 @@
     {% for prod in product %}
     {% if prod.display_type == "Category product" %}
         <div class="col-12 col-md-4 p-5 mt-3">
-            <a href="{% url 'upload_description' prod.product_id %}">
+            <a href="{% url 'list_prod' prod.category %}">
                 <img src="{{prod.profile_picture.url}}" class="rounded-circle img-fluid border" style="width:250px;height:250px;border-radius:50px" >
             </a>
             <h5 class="text-center mt-3 mb-3">{{prod.product_name}}</h5>
@@ -140,7 +140,7 @@
         {% if prod.display_type == "Feature product" %}
             <div class="col-12 col-md-4 mb-4">
                 <div class="card h-100">
-                    <a href="{% url 'upload_description' prod.product_id %}">
+                    <a href="{% url 'prod_description'%}">
                         <img src="{{prod.profile_picture.url}}" class="card-img-top" alt="...">
                     </a>
                     <div class="card-body">

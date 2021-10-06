@@ -15,7 +15,7 @@ class SignUpView(generic.CreateView):
 
 
 def index_page(request):  
-    product_details = Product_table.objects.only('product_id','product_name','price','profile_picture').filter(status="approved")
+    product_details = Product_table.objects.only('product_id','product_name','price','profile_picture').filter(status='approved')
     return render(request, 'index.html', {'product':product_details})
 
 
@@ -27,7 +27,7 @@ def upload_product(request):
             post = form.save(commit=False)
             post.user_id = request.user.id
             post.date_upload =timezone.now()
-            post.status="unapprove"
+            post.status='unapprove'
             post.save()
             return HttpResponsePermanentRedirect(reverse('upload_prod'))
     else:
@@ -44,11 +44,11 @@ def manage_product(request):
 @login_required
 def approve_product(request, prod_id):
     product =Product_table.objects.get(product_id=prod_id)
-    if product.status =="approved":        
-        product.status ="unapprove" 
+    if product.status =='unapprove':
+        product.status='approved' 
         
     else:
-        product.status ="approved"    
+        product.status='unapprove'    
     product.save()
     return manage_product(request)  
 
@@ -68,6 +68,12 @@ def delete_product(request,prod_id):
 
     
 @login_required
+def product_full_list(request, category):
+    product_details = Product_table.objects.filter(category=category)
+    return render(request=request, template_name='shop.html', context={'product':product_details})
+
+
+@login_required
 def product_description(request, prod_id):
-    product_details = Product_table.object.get(product_id =prod_id)
-    return render(request=request, template_name='admin/shop-single.html', context={'product':product_details})
+    product_details = Product_table.objects.get(product_id=prod_id)
+    return render(request=request, template_name='shop-single.html', context={'product':product_details})

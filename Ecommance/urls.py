@@ -33,6 +33,7 @@ urlpatterns = [
     url(r'^accounts/', include('django.contrib.auth.urls')),
     url(r'^accounts/ signup/$', admin_view.SignUpView.as_view(), name ="signup"),
     url(r'^adminapp/', include('Ecommance.adminapp.urls')),
+    url(r'^paymentapp/', include('Ecommance.paymentapp.urls')),
     url(r'^username/(?P<user_id>\d+)/', user_view.userProfile, name ="username")
 
 ]

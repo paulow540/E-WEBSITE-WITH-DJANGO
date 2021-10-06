@@ -164,15 +164,15 @@
                                             <li class="list-inline-item"><span class="btn btn-success btn-size">XL</span></li>
                                         </ul>
                                     </div>
+                                    
                                     <div class="col-auto">
                                         <ul class="list-inline pb-3">
                                             <li class="list-inline-item text-right">
                                                 Quantity
-                                                <input type="hidden" name="product-quanity" id="product-quanity" value="1">
-                                            </li>
-                                            <li class="list-inline-item"><span class="btn btn-success" id="btn-minus">-</span></li>
-                                            <li class="list-inline-item"><span class="badge bg-secondary" id="var-value">1</span></li>
-                                            <li class="list-inline-item"><span class="btn btn-success" id="btn-plus">+</span></li>
+                                                {% {% csrf_token %}}
+                                                { load bootstrap %}
+                                                {{form|bootstrap}}
+                                              
                                         </ul>
                                     </div>
                                 </div>
