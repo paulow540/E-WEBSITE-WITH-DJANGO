@@ -140,7 +140,7 @@
         {% if prod.display_type == "Feature product" %}
             <div class="col-12 col-md-4 mb-4">
                 <div class="card h-100">
-                    <a href="{% url 'prod_description'%}">
+                    <a href="{% url 'user_profile' prod.product_id %}">
                         <img src="{{prod.profile_picture.url}}" class="card-img-top" alt="...">
                     </a>
                     <div class="card-body">

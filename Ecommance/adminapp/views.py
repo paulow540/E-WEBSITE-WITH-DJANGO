@@ -2,7 +2,7 @@ from django.shortcuts import get_object_or_404, render
 from django.urls import reverse_lazy, reverse
 from.forms import SignUpForm ,Product_form
 from django.views import generic
-from .models import Product_table
+from .models import Product_table,Profile
 from django.http import HttpResponseRedirect , HttpResponsePermanentRedirect 
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required
@@ -77,3 +77,24 @@ def product_full_list(request, category):
 def product_description(request, prod_id):
     product_details = Product_table.objects.get(product_id=prod_id)
     return render(request=request, template_name='shop-single.html', context={'product':product_details})
+
+
+# def edit_Order():
+#     pass
+
+
+@login_required
+def manage_staff(request):
+    staff_details = Profile.objects.all()
+    return render(request, 'adminapp/manage_staff.html',{'staff':staff_details})
+
+
+@login_required
+def staff_profile(request, user_id):
+    staff_details= Profile.objects.all().filter(user_id =user_id)
+    return render(request, 'adminapp/staff_profile.html',{'staff':staff_details})
+
+
+@login_required
+def edit_profile(request, user_id):
+    return 0

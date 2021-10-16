@@ -15,3 +15,12 @@ class Order_table(models.Model):
     price = models.CharField(unique=False, max_length=11)
     purchased =models.BooleanField(default=False, unique =False)
     delivered =models.BooleanField(default=False, unique =False)
+    delivery_agent =models.IntegerField(unique=False, null=True)
+
+
+class Invoice_table(models.Model):    
+    invoice_id =models.AutoField(primary_key=True)
+    date_cashout =models.DateTimeField(default=timezone.now)
+    user =models.ForeignKey(User, on_delete =models.CASCADE)
+    total_price = models.CharField(unique=False, max_length=11)
+    cashout =models.BooleanField(unique =False, default=False)
