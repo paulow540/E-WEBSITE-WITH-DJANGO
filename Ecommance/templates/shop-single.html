@@ -62,6 +62,8 @@
                                                 {% csrf_token %}
                                                 {% load bootstrap_tags %}
                                                 {{form|as_bootstrap}} 
+                                                {% block  %}
+                                                {% endblock  %}
                                                                                         
                                         </ul>
                                     </div>
