@@ -5,8 +5,9 @@ from Ecommance.adminapp.models import Product_table
 from django.http import HttpResponseRedirect , HttpResponsePermanentRedirect 
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required
-from .forms import AddToCart_form
+from .forms import AddToCart_form, PaymentOption_form, CardDetails_form
 from .models import Order_table, Invoice_table
+from django.db import transaction
 
 # Create your views here.
 
@@ -30,14 +31,14 @@ def addToCart(request, prod_id):
     
     else:
         form =AddToCart_form()
-        product_details = Product_table.object.get(product_id =prod_id)
+        product_details = Product_table.objects.get(product_id =prod_id)
         price =product_details.price
         content = {'form':form, "product":product_details}
         return render(request=request, template_name='shop-single.html',context={'form':form ,'product':product_details})
 
 @login_required
 def product_FromCart(request, prod_id):
-    cart_details = Order_table.objects.filter(user_id = request.user.id)
+    cart_details = Order_table.objects.filter(user_id = request.user.id, purchased = False)
     return render(request, "paymentapp/cart_product.html", {'product': cart_details})
 
 
@@ -65,10 +66,72 @@ def delete_Order(request, order_id):
     
 @login_required
 def order_Receipt(request, user_id):
+    price =0
     order =Order_table.objects.filter(user_id =user_id)
-    receipt = Invoice_table(order_id =order.id, product_id = order.product_id, date_cashout = timezone.now, user_id =user_id,
-    total_price =order.price.sum())
+    for value in order.values():
+        price += int(value['price'])
+    receipt = Invoice_table(date_cashout = timezone.now, user_id =user_id,
+    total_price =price)
     receipt.save()
-    receipt_details =Invoice_table.objects.filter(user_id =user_id)
-    return 0
-    # return render(request, template_name = "paymentapp/receipt.html", context ={"receipt": receipt_details})
+    receipt_details =Invoice_table.objects.filter(user_id =user_id)   
+    return render(request, template_name = "paymentapp/receipt.html", context ={"receipt": receipt_details.values()[0], 'order':order})
+
+
+@login_required
+def payment_service(request, user_id):
+    form = PaymentOption_form(request.POST)
+    if request.method == 'POST':
+        if(form.is_valid):
+            option = form.cleaned_data['option']       
+        if  option == 'pay_delivery':
+            return render(request, template_name = "paymentapp/success_pay.html", context ={"receipt":receipt_details.values()[0]})
+        else:
+           return HttpResponsePermanentRedirect(reverse('cart_detail',args(user_id)))
+
+    else:
+        form = PaymentOption_form()       
+        return render(request, template_name ="paymentapp/payment_service.html", context ={"form":form})
+        receipt = Invoice_table(date_cashout = timezone.now, user_id =user_id,
+        cashout=False)
+        return render(request, template_name = "paymentapp/payment_service.html",  context ={"receipt":receipt_details.values()[0]})
+
+
+
+@transaction.atomic  
+@login_required
+def card_detail(request, user_id):
+    form = CardDetails_form(request.POST)
+    if request.method == 'POST':
+        if(form.is_valid):
+            cardNumber = form.cleaned_data['card_number']    
+            cardCvv = form.cleaned_data['card_cvv']       
+            cardExpiryDate = form.cleaned_data['card_expiry_date']  
+        order =Order_table.objects.filter(user_id=user_id,purchased=False)
+        order.purchased =True
+        order.save()
+        invoice =Invoice_table.objects.filter(user_id=user_id,purchased=False)   
+        invoice.purchased =True
+        invoice.save()  
+        return render(request, template_name ="paymentapp/card_detail.html", context ={"form":form})      
+      
+    else:
+        form = PaymentOption_form()
+        receipt = Invoice_table(date_cashout = timezone.now, user_id =user_id,
+        cashout=False)
+        return render(request, template_name = "paymentapp/card_detail.html")
+
+        
+   
+
+@login_required
+def cancle_order(request, user_id):
+    Invoice_table.objects.filter(user_id = user_id, cashout = False).delete()
+    return product_FromCart(request)
+
+
+# @transaction.atomic  
+# @login_required
+# def order_success(request, user_id):
+#     order =Order_table.objects.filter(user_id=user_id,purchased=False)
+#     order.purchased =True
+#     invoice =Invoice_table.objects.filter(user_id=user_id,purchased=False)
