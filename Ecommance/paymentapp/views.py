@@ -129,9 +129,9 @@ def cancle_order(request, user_id):
     return product_FromCart(request)
 
 
-@transaction.atomic  
-@login_required
-def order_success(request, user_id):
-    order =Order_table.objects.filter(user_id=user_id,purchased=False)
-    order.purchased =True
-    invoice =Invoice_table.objects.filter(user_id=user_id,purchased=False)
+# @transaction.atomic  
+# @login_required
+# def order_success(request, user_id):
+#     order =Order_table.objects.filter(user_id=user_id,purchased=False)
+#     order.purchased =True
+#     invoice =Invoice_table.objects.filter(user_id=user_id,purchased=False)
