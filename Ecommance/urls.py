@@ -25,16 +25,16 @@ from django.contrib.staticfiles.urls import static, staticfiles_urlpatterns
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("", admin_view.index_page, name ="homepage"),
-    path("contact/", TemplateView.as_view(template_name="contact.html"), name = "contact"),
-    path("about/", TemplateView.as_view(template_name="about.html"), name = "about"),
-    path("shop/", TemplateView.as_view(template_name="shop.html"), name = "shop"),
-    path("shop-single/", TemplateView.as_view(template_name="shop-single.html"), name = "shop-single"),
-    path("cart/", TemplateView.as_view(template_name="cart.html"), name = "cart"),
-    url(r'^accounts/', include('django.contrib.auth.urls')),
-    url(r'^accounts/ signup/$', admin_view.SignUpView.as_view(), name ="signup"),
-    url(r'^adminapp/', include('Ecommance.adminapp.urls')),
-    url(r'^paymentapp/', include('Ecommance.paymentapp.urls')),
-    url(r'^username/(?P<user_id>\d+)/', user_view.userProfile, name ="username")
+    # path("contact/", TemplateView.as_view(template_name="contact.html"), name = "contact"),
+    # path("about/", TemplateView.as_view(template_name="about.html"), name = "about"),
+    # path("shop/", TemplateView.as_view(template_name="shop.html"), name = "shop"),
+    # path("shop-single/", TemplateView.as_view(template_name="shop-single.html"), name = "shop-single"),
+    # path("cart/", TemplateView.as_view(template_name="cart.html"), name = "cart"),
+    # url(r'^accounts/', include('django.contrib.auth.urls')),
+    # url(r'^accounts/ signup/$', admin_view.SignUpView.as_view(), name ="signup"),
+    # url(r'^adminapp/', include('Ecommance.adminapp.urls')),
+    # url(r'^paymentapp/', include('Ecommance.paymentapp.urls')),
+    # url(r'^username/(?P<user_id>\d+)/', user_view.userProfile, name ="username")
 
 ]
 
