@@ -20,34 +20,34 @@
                     <div class="card">
                         <div class="card-body">
                             <h5 class="h5">STAFF ID:
-                                <span>{{staff.user_id}}</span>
+                                <span>{{staff.get.user_id}}</span>
                             </h5>
                             <h5 class="h5">FULLNAME:
-                                <span>{{staff.user.first_name}} {{staff.user.last_name}}</span>
+                                <span>{{staff.get.user.first_name}} {{staff.user.last_name}}</span>
                             </h5>
 
                             <h5>USERNAME:
-                                <span>{{staff.user.username}}</span>
+                                <span>{{staff.get.user.username}}</span>
                             </h5>
 
                             <h5>EMAIL ADDRESS: {{staff.email}}</h5>
                             <h5>ADDRESS:
-                                <span>{{staff.email}}</span>
+                                <span>{{staff.get.email}}</span>
                             </h5>
                             <h5>STATE:
-                                <span>{{staff.state}}</span>
+                                <span>{{staff.get.state}}</span>
                             </h5>
                             <h5>NATIONALITY:
-                                <span>{{user.nationality}}</span>
+                                <span>{{user.get.nationality}}</span>
                             </h5>
                             <h5>MARITAL STATUS:
-                                <span>{{staff.marital_status}}</span>
+                                <span>{{staff.get.marital_status}}</span>
                             </h5>
                             <h5>POSITION:
-                                <span>{{staff.position}}</span>
+                                <span>{{staff.get.position}}</span>
                             </h5>
                             <h5>EMAIL ADDRESS:
-                                <span>{{staff.email}}</span>
+                                <span>{{staff.get.email}}</span>
                             </h5>
 
 
@@ -56,13 +56,13 @@
                             <h5>STAFF STATUS</h5>
                             <p>{% if staus %} Active {% else %} Deactivate {% endif %}
                             </p>
-                             {% comment %} <div class="row pb-3">
+                            {% comment %} <div class="row pb-3">
                                 <a href="{% url 'edit_profile' staff_user_id %}">
                                     <div class="col d-grid">
                                         <button type="submit" class="btn btn-success btn-lg"></button>
                                     </div>
                                 </a>
-                            </div>  {% endcomment %}
+                            </div>   {% endcomment %}
 
 
 

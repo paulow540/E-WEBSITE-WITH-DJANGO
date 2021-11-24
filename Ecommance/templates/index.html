@@ -75,6 +75,7 @@
                             </p>
                         </div>
                     </div>
+       
                 </div>
             </div>
         </div>
@@ -111,7 +112,9 @@
             </a>
             <h5 class="text-center mt-3 mb-3">{{prod.product_name}}</h5>
             <p class="text-center">
-                <a class="btn btn-success">Go Shop</a>
+            <a  class="btn btn-success" href="{% url 'list_prod' prod.category %}">
+             Go Shop
+            </a>
             </p>
         </div>
     {% endif %}
